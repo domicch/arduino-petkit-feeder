@@ -51,7 +51,6 @@ void MotorGroup::changeState(int toState) {
     case STATE_FEEDER_MOVING:
         feederLastSensorState = getFeederSensorState();
         feederRotationCounter = 0;
-        feederTargetRotations = 6;
         moveFeederMotor();
         break;
     }
@@ -104,7 +103,7 @@ void MotorGroup::run() {
             feederRotationCounter++;
             feederLastSensorState = feederSensorState;
         }
-        if(feederRotationCounter >= feederTargetRotations) {
+        if(feederRotationCounter >= FEEDER_TARGET_ROTATIONS) {
             stopFeederMotor();
             changeState(STATE_IDLE);
         }

@@ -41,10 +41,11 @@ class MotorGroup {
 
     const unsigned long DOOR_DELAY_MILLISEC = 1000;
     unsigned long doorDelayStartTs = 0UL;
+    const int FEEDER_TARGET_ROTATIONS = 10;
 
     int feederLastSensorState;
     int feederRotationCounter;
-    int feederTargetRotations;
+    
 
     void moveDoorMotorOpen();
 
