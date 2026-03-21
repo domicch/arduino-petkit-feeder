@@ -7,9 +7,8 @@ class Scheduler {
     private:
         RTC_DS3231 rtc;
 
-        int schedules[2][2] = { // [hour, minute]
-            {7, 0},
-            {19, 0},
+        int schedules[20][2] = { // [hour, minute] - do NOT use {0, 0} (midnight is reserved as empty/uninitialized marker)
+            {8, 0},
         };
 
         bool isAlarmSet = false;

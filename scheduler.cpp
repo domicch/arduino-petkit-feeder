@@ -83,6 +83,7 @@ void Scheduler::setAlarm() {
 
     // find the smallest time after now
     for(int i = 0; i < rows; i++) {
+        if(schedules[i][0] == 0 && schedules[i][1] == 0) continue;
         DateTime s (0, 0, 0, schedules[i][0], schedules[i][1], 0);
         if(s > nowNoDate && (smallestTimeIndex == -1 || s < DateTime(0, 0, 0, schedules[smallestTimeIndex][0], schedules[smallestTimeIndex][1], 0))) {
             smallestTimeIndex = i;
@@ -92,6 +93,7 @@ void Scheduler::setAlarm() {
     if(smallestTimeIndex == -1) {
         // use the smallest time
         for(int i = 0; i < rows; i++) {
+            if(schedules[i][0] == 0 && schedules[i][1] == 0) continue;
             DateTime s (0, 0, 0, schedules[i][0], schedules[i][1], 0);
             if(smallestTimeIndex == -1 || s < DateTime(0, 0, 0, schedules[smallestTimeIndex][0], schedules[smallestTimeIndex][1], 0)) {
                 smallestTimeIndex = i;
